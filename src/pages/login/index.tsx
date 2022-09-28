@@ -2,17 +2,22 @@ import { Box, Button, Flex, Input, InputGroup, InputLeftElement, Link, Text, use
 import { GetServerSideProps } from "next";
 import { FiGithub, FiLock, FiUser } from 'react-icons/fi';
 import { getSession, signIn } from 'next-auth/react'
+import { FormEvent } from "react";
 
 function Login() {
   const theme = useTheme();
 
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    signIn('credentials')
+  }
   return (
     <Flex
       width="100%"
       height="100vh"
       alignItems="center"
       justifyContent="center">
-      <form onSubmit={() => { }}>
+      <form onSubmit={onSubmit}>
         <Box
           width="428px"
         >
